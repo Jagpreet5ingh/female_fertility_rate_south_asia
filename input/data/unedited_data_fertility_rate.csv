@@ -1,0 +1,29 @@
+Time,Time Code,"South Asia [SAS] - Fertility rate, total (births per woman) [SP.DYN.TFRT.IN]"
+2000,YR2000,3.57222407623416
+2001,YR2001,3.51554775582573
+2002,YR2002,3.43226816745664
+2003,YR2003,3.33920517614016
+2004,YR2004,3.25804645103285
+2005,YR2005,3.16695440217352
+2006,YR2006,3.07374585084639
+2007,YR2007,2.99959186542332
+2008,YR2008,2.92963295005513
+2009,YR2009,2.87774589925352
+2010,YR2010,2.80760182404995
+2011,YR2011,2.74278809849491
+2012,YR2012,2.67834837551275
+2013,YR2013,2.62133190589734
+2014,YR2014,2.53000842799494
+2015,YR2015,2.49836592473185
+2016,YR2016,2.4751853554712
+2017,YR2017,2.4061305272959
+2018,YR2018,2.37934101117305
+2019,YR2019,2.32011599715771
+2020,YR2020,2.26709778262632
+,,
+,,
+,,
+Data from database: Gender Statistics,,
+Last Updated: 03/04/2024,,
+Code,License Type,Indicator Name,Long definition,Source,Topic,Periodicity,Aggregation method,Statistical concept and methodology,Development relevance,Limitations and exceptions,General comments,License URL
+SP.DYN.TFRT.IN,CC BY-4.0,"Fertility rate, total (births per woman)",Total fertility rate represents the number of children that would be born to a woman if she were to live to the end of her childbearing years and bear children in accordance with age-specific fertility rates of the specified year.,"(1) United Nations Population Division. World Population Prospects: 2022 Revision. (2) Census reports and other statistical publications from national statistical offices, (3) Eurostat: Demographic Statistics, (4) United Nations Statistical Division. Population and Vital Statistics Reprot (various years), (5) U.S. Census Bureau: International Database, and (6) Secretariat of the Pacific Community: Statistics and Demography Programme.",Health: Reproductive health,Annual,Weighted average,"Total fertility rates are based on data on registered live births from vital registration systems or, in the absence of such systems, from censuses or sample surveys. The estimated rates are generally considered reliable measures of fertility in the recent past. Where no empirical information on age-specific fertility rates is available, a model is used to estimate the share of births to adolescents. For countries without vital registration systems fertility rates are generally based on extrapolations from trends observed in censuses or surveys from earlier years.","Reproductive health is a state of physical and mental well-being in relation to the reproductive system and its functions and processes. Means of achieving reproductive health include education and services during pregnancy and childbirth, safe and effective contraception, and prevention and treatment of sexually transmitted diseases. Complications of pregnancy and childbirth are the leading cause of death and disability among women of reproductive age in developing countries.",Annual data series from United Nations Population Division's World Population Prospects are interpolated data from 5-year period data. Therefore they may not reflect real events as much as observed data.,Relevance to gender indicator: it can indicate the status of women within households and a woman’s decision about the number and spacing of children.,https://datacatalog.worldbank.org/public-licenses#cc-by
