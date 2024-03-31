@@ -1,5 +1,5 @@
 ---
-title: "Analyzing the Relationship between Female Fertility Rate and Female Literacy Rate in South Asia"
+title: "Books and Babies: An Analysis of the Relationship between Literacy Rate and Fertility Rate in South Asia (2000-2020)"
 author: "Jagpreet Singh"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 date-format: long
@@ -17,16 +17,116 @@ knitr::opts_chunk$set(echo = FALSE, results ="hide", message = FALSE, warning = 
 
 # Introduction
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Data {#sec-data}
+
+
+
+
+
+
+
+
+
+
+
 
 ## Data Source {#sec-variables-of-interest}
 
+
+
+
+
+
+
+
+
+
+
+
+
 ## Variables of Interest
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Model {#sec-model}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Model Justification
+
+
+
+
+
+
+
+
 
 # Results {#sec-results}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Discussion {#sec-discussion}
+
+
+
+
+
+
