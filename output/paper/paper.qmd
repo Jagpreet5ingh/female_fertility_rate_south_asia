@@ -8,7 +8,7 @@ execute:
   echo: false
 format: pdf
 fig-pos: "H"
-abstract: TBD
+abstract: This paper utilizes data from the World Bank’s Gender Statistics database to examine the relationship between the adult female literacy rate (% of females ages 15 and above) and fertility rate (total births per woman) in South Asia between 2000-2020. The analysis revealed a negative correlation between the two variables, indicating that as the literacy rate increased, the fertility rate decreased. These findings matter as they highlight the importance of investing in female education and empowerment to manage population growth and promote sustainable development. The insights can guide policymakers make decisions on education initiatives and reproductive health programs to further enhance socioeconomic progress in the region.
 ---
 
 ```{r}
@@ -17,116 +17,16 @@ knitr::opts_chunk$set(echo = FALSE, results ="hide", message = FALSE, warning = 
 
 # Introduction
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Data {#sec-data}
-
-
-
-
-
-
-
-
-
-
-
 
 ## Data Source {#sec-variables-of-interest}
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## Variables of Interest
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Model {#sec-model}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Model Justification
-
-
-
-
-
-
-
-
 
 # Results {#sec-results}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Discussion {#sec-discussion}
-
-
-
-
-
-
