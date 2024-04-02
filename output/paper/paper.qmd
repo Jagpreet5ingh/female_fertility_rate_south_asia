@@ -1,7 +1,7 @@
 ---
 title: "Books and Babies: An Analysis of the Relationship between Literacy Rate and Fertility Rate in South Asia (2000-2020)"
 author: "Jagpreet Singh"
-thanks: "Code and data are available at: https://github.com/Jagpreet5ingh/female_fertility_rate_south_asia"
+thanks: "Code and data are available at: https://github.com/Jagpreet5ingh/female_fertility_rate_south_asia.git"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 date-format: long
 bibliography: references.bib
