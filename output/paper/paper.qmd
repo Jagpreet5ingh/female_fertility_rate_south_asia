@@ -1,6 +1,7 @@
 ---
 title: "Books and Babies: An Analysis of the Relationship between Literacy Rate and Fertility Rate in South Asia (2000-2020)"
 author: "Jagpreet Singh"
+thanks: "Code and data are available at: https://github.com/Jagpreet5ingh/female_fertility_rate_south_asia"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 date-format: long
 bibliography: references.bib
@@ -10,12 +11,16 @@ format: pdf
 fig-pos: "H"
 abstract: This paper utilizes data from the World Bank’s Gender Statistics database to examine the relationship between the adult female literacy rate (% of females ages 15 and above) and fertility rate (total births per woman) in South Asia between 2000-2020. The analysis revealed a negative correlation between the two variables, indicating that as the literacy rate increased, the fertility rate decreased. These findings matter as they highlight the importance of investing in female education and empowerment to manage population growth and promote sustainable development. The insights can guide policymakers make decisions on education initiatives and reproductive health programs to further enhance socioeconomic progress in the region.
 ---
-
 ```{r}
 knitr::opts_chunk$set(echo = FALSE, results ="hide", message = FALSE, warning = FALSE)
 ```
-
 # Introduction
+According to the World Bank, the South Asian region comprises Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, and Sri Lanka. It is the most populated region in the world with countries like India, Pakistan and Bangladesh which ranks among the top 10 in in terms of population size. Majority of these countries are also considered developing nations and play a major role in the world economy. In today’s globalized world where population dynamics significantly influence a country's course it is necessary to analyze gender statistics indicators such as fertility rate and female literacy rate and how they relate to each other. By doing so we can gain valuable insights which can help make policy decisions on female education and empowerment that inturn help manage population growth and promote sustainable development.
+
+In this paper, we will examine the relationship between the fertility rate (total births per woman) and adult female literacy rate (% of females ages 15 and above) in South Asia through a linear regression analysis. The estimand here is how fertility rate and female literacy rate are related. Specifically, we will focus on South Asia, the most populated region in the world. We will draw data from the World Bank website. Based on the analysis, we found that there is a negative relationship between fertility rate and literacy rate of adult females.
+
+In section 1, we discuss the source of data used in this paper, methodologies that follow it, and data terminology. In section 2, we present the results of our analysis, focusing on the trajectory of fertility rate and female literacy rate over the last two decades in the region of South Asia. In section 3, we will analyze the trend by establishing a linear regression model. In section 4 we will present the result of the model in a graph. Finally, in section 5 we will further discuss the findings of the result.
+
 
 # Data {#sec-data}
 
