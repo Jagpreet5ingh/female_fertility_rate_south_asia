@@ -27,6 +27,11 @@ In section 1, we discuss the source of data used in this paper, methodologies th
 # Data 
 
 ## Data Description and Methodology
+
+The data used in this paper was obtained from the World Bank's Data Bank which is publicly available on the Data Bank website [@The_World_Bank_2024a]. A considerable amount of the data in the World Bank's Data Bank is gathered and compiled by the World Bank itself, along with information from other reliable public and private sector sources, international organizations, national statistical offices, and specialized agencies of the United Nations (UN). The World Bank then compiles and examines these data to find patterns and provide guidance in policy matters.
+
+The two datasets that are used in this paper are fertility rate (total births per woman)[@The_World_Bank_2024c] and literacy rate, adult females (% of females ages 15 and above) [@The_World_Bank_2024b]. Both female literacy rate and fertility rate data was available for a total of 266 regions including individual countries and group of countries (for example - South Asia, Middle East etc.). While the literacy rate data was available from year 1960 to 2022, the fertility rate data consisted of data from 1960 to 2021. Not every country had data available for each year. The region of interest for this study is South Asia and the time period selected was 2000-2020. Both fertility rate and female literacy rate data was available for South Asia for the specified time period. The two indicators were merged to form a new data set with 21 rows that gives both fertility rate and female literacy rate in South Asia for any given year between 2000-2020.Total fertility rate represents the number of children that would be born to a woman if she were to live to the end of her childbearing years and bear children in accordance with age-specific fertility rates of the specified year. Female Adult literacy rate is the percentage of females ages 15 and above who can both read and write with understanding a short simple statement about their everyday life. 
+
 ```{r}
 #| include: false
 #| warning: false
@@ -55,6 +60,10 @@ kable(analysis_data)
 
 ```
 
+@tbl-data shows the cleaned data with 21 observations from year 2000-2020. Here, fertility_rate_total and female_literacy_rate are the 2 variables of interest.
+
+The data was cleaned and analyzed using the 'R' programming language[@citeR] and the following packages were used: 'tidyverse' [@tidyverse], 'janitor' [@janitor],`dplyr` [@Dplyr], `ggplot2` [@citeggplot2], `here` [@herePackage], `kableExtra` [@citekableExtra], `knitr` [@knitr], `modelsummary` [@model], `readr` [@readr], `tibble` [@tibblePackage] and 'arrow' [@arrow]
+
 ## Data Visualization
 
 ### Trend of Female Literacy Rate in South Asia (2000-2020)
@@ -62,7 +71,7 @@ kable(analysis_data)
 
 ```{r fig.width=12, fig.height=8}
 #| label: fig-1
-#| fig-cap: literacy rate, adult females (% of females ages 15 and above) in South Asia (2000-2020) 
+#| fig-cap: Literacy rate, adult females (% of females ages 15 and above) in South Asia (2000-2020) 
 #| echo: false
 #| warning: false
 # Load necessary libraries
@@ -77,14 +86,14 @@ ggplot(data = analysis_data, aes(x = Year, y = female_literacy_rate)) +
   geom_line(color = "dark green") +  # Change to line graph
   labs(x = "Year", y = "Female Literacy Rate (% of females ages 15 and above)")
 ```
-
+@fig-1 represents South Asia's female literacy rate over the span of 21 years i.e. 2000-2020. The literacy rate is represented as the percentage of females ages 15 and above in South Asia who can both read and write with understanding a short simple statement about their everyday life. The graph depicts an overall upward trend in the female literacy rate over the two decades. The female literacy rate in year 2000 was approximately 44.9287 % which grew consistently over the period of 21 years to reach 64.6073 % as of 2020. There were few minor fluctuations in the opposite direction but no drastic change was observed in the upward trend.The figure suggests that more and more females of ages 15 and above in South Asia acquired literacy over the years.There could be various social, economic and political changes that may have influenced the literacy rate over this time period.
 
 ### Trend of Fertility Rate in South Asia (2000-2020)
 
 
 ```{r fig.width=12, fig.height=8}
 #| label: fig-2
-#| fig-cap: literacy rate, Fertility Rate, Total (births per woman) in South Asia (2000-2020) 
+#| fig-cap: Fertility Rate, Total (births per woman) in South Asia (2000-2020) 
 #| echo: false
 #| warning: false
 # Load necessary libraries
@@ -99,8 +108,7 @@ ggplot(data = analysis_data, aes(x = Year, y = fertility_rate_total)) +
 geom_line(color = "red") +  # Change to line graph
   labs(x = "Year", y = "Fertility Rate, Total (births per woman)")
 ```
-
-## Variables of Interest
+@fig-2 represents South Asia's fertility rate over the span of 21 years i.e. 2000-2020. The fertility rate is represented as the number of children that would be born to a woman if she were to live to the end of her childbearing years and bear children in accordance with age-specific fertility rates of the specified year. The graph depicts a strictly downward trend in the fertility rate over the past two decades. The fertility rate in year 2000 was 3.5722 children per woman which declined over the period of 21 years to 2.2670 children per woman as of 2020.The figure suggests that females in South Asia are choosing to have lesser and lesser number of children in recent times.There could be various social, cultural, economic and political changes that may have influenced this decline in fertility rate.
 
 \newpage
 
@@ -149,6 +157,8 @@ analysis_data %>%
   labs(x = "Literacy Rate, Adult Females (% of females ages 15 and above)", y = "Fertility Rate, Total (births per woman)") +
   theme_classic()
 ```
+
+@fig-3 is a depiction of a linear regression model showing the relationship between fertility rate, total (births per woman) and literacy rate, adult females (% of females ages 15 and above). The female literacy rate is given by the x-axis and the fertility rate is given by the y-axis. The solid black line indicates the trend of this relationship as estimated by the linear regression model. The confidence interval for the regression line is given by the grey shaded area and also represents the uncertainty around the estimated relationship. Analyzing the regression line, we can observe that there exists a negative relationship between fertility rate, total (births per woman) and literacy rate, adult females (% of females ages 15 and above). As the literacy rate increases the total number of children a woman gives birth decreases. The negative sloping regression line indicating a negative correlation and the confidence interval giving the range of the uncertainty, we can say that a true regression lies in this area.
 
 ```{r, results='asis'}
 #| label: tbl-model
