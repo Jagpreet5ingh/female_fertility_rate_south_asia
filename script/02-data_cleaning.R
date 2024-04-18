@@ -25,7 +25,7 @@ female_literacy_rate_data <- read_csv("data/raw_data/API_SE.ADT.LITR.FE.ZS_DS2_e
 south_asia_literacy_rate <- female_literacy_rate_data %>% 
   filter(`Country Name` == "South Asia") %>% 
   select(`2000`:`2020`) %>% 
-  pivot_longer(cols = everything(), names_to = "Year", values_to = "female_literacy_Rate")
+  pivot_longer(cols = everything(), names_to = "Year", values_to = "female_literacy_rate")
 
 # Combine the datasets
 combined_data <- left_join(south_asia_fertility_rate, south_asia_literacy_rate, by = "Year")
