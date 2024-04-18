@@ -1,0 +1,108 @@
+Link to chat: https://chat.openai.com/share/fb6af6e3-84ee-44c5-a192-ed3c686c5b00
+
+LLM : ChatGPT-3.5
+Date: 17 April 2024
+
+#### Workspace setup ####
+library(tidyverse)
+
+#### Read data ####
+cleaned_data_south_asia_2000_2020 <- read.csv("data/analysis_data/cleaned_data_south_asia_2000_2020.csv")
+
+#### Test data ####
+
+## Test if there are 21 years
+cleaned_data_south_asia_2000_2020$Year |> min(na.rm = TRUE) >=21
+write another test to check that there are no zero or blank values in fertility_rate_total column
+ChatGPT
+To test that there are no zero or blank values in the fertility_rate_total column, you can use the assertive package, which provides convenient functions for making assertions about the values of R objects. Here's how you can write the test:
+
+R
+Copy code
+library(assertive)
+
+# Test for zero or blank values in the fertility_rate_total column
+assertive::assert_all_are_not_na_or_zero(cleaned_data_south_asia_2000_2020$fertility_rate_total)
+This will check if all values in the fertility_rate_total column are neither NA nor zero. If any of these conditions are violated, it will raise an error. You can include this test in your script after reading the data to ensure data quality.
+
+User
+create this test using tidyverse
+ChatGPT
+You can achieve this using the dplyr package from the tidyverse to filter out rows where the fertility_rate_total column is NA or zero, and then check if any rows remain. Here's how you can write the test using the dplyr package:
+
+R
+Copy code
+library(dplyr)
+
+# Test for zero or blank values in the fertility_rate_total column
+zero_blank_test <- cleaned_data_south_asia_2000_2020 %>%
+  filter(!is.na(fertility_rate_total) & fertility_rate_total != 0) %>%
+  nrow() == nrow(cleaned_data_south_asia_2000_2020)
+
+# Output the result
+print(zero_blank_test)
+This code filters out rows where the fertility_rate_total column is not NA and not zero, then compares the number of remaining rows to the original dataset. If they are the same, it means there are no zero or blank values in the fertility_rate_total column. The print(zero_blank_test) statement will output TRUE if the test passes and FALSE if it fails.
+
+User
+create the same test to check the female_literacy_rate column
+ChatGPT
+You can create a similar test for the female_literacy_rate column using the dplyr package from the tidyverse. Here's how you can do it:
+
+R
+Copy code
+library(dplyr)
+
+# Test for zero or blank values in the female_literacy_rate column
+zero_blank_test <- cleaned_data_south_asia_2000_2020 %>%
+  filter(!is.na(female_literacy_rate) & female_literacy_rate != 0) %>%
+  nrow() == nrow(cleaned_data_south_asia_2000_2020)
+
+# Output the result
+print(zero_blank_test)
+This code filters out rows where the female_literacy_rate column is not NA and not zero, then compares the number of remaining rows to the original dataset. If they are the same, it means there are no zero or blank values in the female_literacy_rate column. The print(zero_blank_test) statement will output TRUE if the test passes and FALSE if it fails.
+
+User
+create a test to make sure that none of the values in fertility_rate_total matches female_literacy_rate
+ChatGPT
+You can create a test to ensure that none of the values in the fertility_rate_total column match the values in the female_literacy_rate column. Here's how you can do it using the dplyr package:
+
+R
+Copy code
+library(dplyr)
+
+# Test for matching values between fertility_rate_total and female_literacy_rate columns
+matching_values <- cleaned_data_south_asia_2000_2020 %>%
+  filter(!is.na(fertility_rate_total) & !is.na(female_literacy_rate)) %>%
+  filter(fertility_rate_total == female_literacy_rate)
+
+# Output the result
+if (nrow(matching_values) > 0) {
+  print("Test Failed: Some values in fertility_rate_total match female_literacy_rate.")
+} else {
+  print("Test Passed: No values in fertility_rate_total match female_literacy_rate.")
+}
+This code filters out rows where neither fertility_rate_total nor female_literacy_rate is NA, and then filters rows where the two columns have matching values. If any such rows exist, it indicates a failure in the test, and a message is printed accordingly. If no matching rows are found, the test passes.
+
+User
+create a test to make sure that none of the values in fertility_rate_total matches female_literacy_rate column for any given year
+ChatGPT
+To create a test ensuring that none of the values in the fertility_rate_total column matches the values in the female_literacy_rate column for any given year, you can use the dplyr package from the tidyverse to group the data by year and then check for matching values within each group. Here's how you can do it:
+
+R
+Copy code
+library(dplyr)
+
+# Test for matching values between fertility_rate_total and female_literacy_rate columns for each year
+matching_values <- cleaned_data_south_asia_2000_2020 %>%
+  group_by(Year) %>%
+  filter(!is.na(fertility_rate_total) & !is.na(female_literacy_rate)) %>%
+  filter(fertility_rate_total == female_literacy_rate) %>%
+  ungroup()
+
+# Output the result
+if (nrow(matching_values) > 0) {
+  print("Test Failed: Some values in fertility_rate_total match female_literacy_rate for one or more years.")
+} else {
+  print("Test Passed: No values in fertility_rate_total match female_literacy_rate for any given year.")
+}
+This code groups the data by year, then filters out rows where neither fertility_rate_total nor female_literacy_rate is NA, and finally filters rows where the two columns have matching values within each year group. If any such rows exist, it indicates a failure in the test, and a message is printed accordingly. If no matching rows are found for any given year, the test passes.
