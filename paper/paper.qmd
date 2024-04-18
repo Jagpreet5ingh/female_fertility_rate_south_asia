@@ -14,6 +14,19 @@ abstract: This paper utilizes data from the World Bank’s Gender Statistics dat
 ```{r}
 knitr::opts_chunk$set(echo = FALSE, results ="hide", message = FALSE, warning = FALSE)
 ```
+
+
+# Introduction
+According to the World Bank, the South Asian region comprises Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, and Sri Lanka. It is the most populated region in the world with countries like India, Pakistan and Bangladesh which ranks among the top 10 in in terms of population size. Majority of these countries are also considered developing nations and play a major role in the world economy. In today’s globalized world where population dynamics significantly influence a country's course it is necessary to analyze gender statistics indicators such as fertility rate and female literacy rate and how they relate to each other. By doing so we can gain valuable insights which can help make policy decisions on female education and empowerment that inturn help manage population growth and promote sustainable development.
+
+In this paper, we will examine the relationship between the fertility rate (total births per woman) and adult female literacy rate (% of females ages 15 and above) in South Asia through a linear regression analysis. The estimand here is how fertility rate and female literacy rate are related. Specifically, we will focus on South Asia, the most populated region in the world. We will draw data from the World Bank website. Based on the analysis, we found that there is a negative relationship between fertility rate and literacy rate of adult females.
+
+In section 1, we discuss the source of data used in this paper, methodologies that follow it, and data terminology. In section 2, we present the results of our analysis, focusing on the trajectory of fertility rate and female literacy rate over the last two decades in the region of South Asia. In section 3, we will analyze the trend by establishing a linear regression model. In section 4 we will present the result of the model in a graph. Finally, in section 5 we will further discuss the findings of the result.
+
+
+# Data 
+
+## Data Description and Methodology
 ```{r}
 #| include: false
 #| warning: false
@@ -30,18 +43,6 @@ library(modelsummary)
 analysis_data <- read.csv(here::here("data/analysis_data/cleaned_data_south_asia_2000_2020.csv"))
 
 ```
-
-
-# Introduction
-According to the World Bank, the South Asian region comprises Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, and Sri Lanka. It is the most populated region in the world with countries like India, Pakistan and Bangladesh which ranks among the top 10 in in terms of population size. Majority of these countries are also considered developing nations and play a major role in the world economy. In today’s globalized world where population dynamics significantly influence a country's course it is necessary to analyze gender statistics indicators such as fertility rate and female literacy rate and how they relate to each other. By doing so we can gain valuable insights which can help make policy decisions on female education and empowerment that inturn help manage population growth and promote sustainable development.
-
-In this paper, we will examine the relationship between the fertility rate (total births per woman) and adult female literacy rate (% of females ages 15 and above) in South Asia through a linear regression analysis. The estimand here is how fertility rate and female literacy rate are related. Specifically, we will focus on South Asia, the most populated region in the world. We will draw data from the World Bank website. Based on the analysis, we found that there is a negative relationship between fertility rate and literacy rate of adult females.
-
-In section 1, we discuss the source of data used in this paper, methodologies that follow it, and data terminology. In section 2, we present the results of our analysis, focusing on the trajectory of fertility rate and female literacy rate over the last two decades in the region of South Asia. In section 3, we will analyze the trend by establishing a linear regression model. In section 4 we will present the result of the model in a graph. Finally, in section 5 we will further discuss the findings of the result.
-
-
-# Data {#sec-data}
-
 ```{r, results='asis'}
 #| echo: false
 #| warning: false
@@ -53,7 +54,51 @@ library(knitr)
 kable(analysis_data)
 
 ```
-## Data Source {#sec-variables-of-interest}
+
+## Data Visualization
+
+### Trend of Female Literacy Rate in South Asia (2000-2020)
+
+
+```{r fig.width=12, fig.height=8}
+#| label: fig-1
+#| fig-cap: literacy rate, adult females (% of females ages 15 and above) in South Asia (2000-2020) 
+#| echo: false
+#| warning: false
+# Load necessary libraries
+library(ggplot2)
+library(here)
+
+# Read data from CSV file
+analysis_data <- read.csv(here::here("data/analysis_data/cleaned_data_south_asia_2000_2020.csv"))
+
+# Create ggplot
+ggplot(data = analysis_data, aes(x = Year, y = female_literacy_rate)) +
+  geom_line(color = "dark green") +  # Change to line graph
+  labs(x = "Year", y = "Female Literacy Rate (% of females ages 15 and above)")
+```
+
+
+### Trend of Fertility Rate in South Asia (2000-2020)
+
+
+```{r fig.width=12, fig.height=8}
+#| label: fig-2
+#| fig-cap: literacy rate, Fertility Rate, Total (births per woman) in South Asia (2000-2020) 
+#| echo: false
+#| warning: false
+# Load necessary libraries
+library(ggplot2)
+library(here)
+
+# Read data from CSV file
+analysis_data <- read.csv(here::here("data/analysis_data/cleaned_data_south_asia_2000_2020.csv"))
+
+# Create ggplot
+ggplot(data = analysis_data, aes(x = Year, y = fertility_rate_total)) +
+geom_line(color = "red") +  # Change to line graph
+  labs(x = "Year", y = "Fertility Rate, Total (births per woman)")
+```
 
 ## Variables of Interest
 
@@ -103,6 +148,26 @@ analysis_data %>%
   geom_smooth(method = "lm", se = TRUE, color = "black", linetype = "solid") +
   labs(x = "Literacy Rate, Adult Females (% of females ages 15 and above)", y = "Fertility Rate, Total (births per woman)") +
   theme_classic()
+```
+
+```{r, results='asis'}
+#| label: tbl-model
+#| tbl-cap: "T-Value and P-Value of Regression"
+#| echo: false
+#| warning: false
+library(knitr)
+
+library(modelsummary)
+
+loaded_model <- readRDS(here::here("models/linear_model.rds"))
+
+model_summary <- summary(loaded_model)
+
+t_values <- model_summary$coefficients[, "t value"]
+p_values <- model_summary$coefficients[, "Pr(>|t|)"]
+
+summary_df <- data.frame(t_value = t_values, p_value = p_values)
+kable(summary_df)
 ```
 
 ## Model Justification
