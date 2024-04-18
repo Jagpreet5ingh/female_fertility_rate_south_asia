@@ -7,7 +7,7 @@
 # Prerequisite : Download the global Literacy rate (adult female) and Fertility rate (total) from World Bank Open Data. Instal packages : Arrow and Tidyverse
 
 #### Workspace setup ####
-library(tidyverse)
+library(tidyverse) 
 library(arrow)
 
 #### Clean data ####
