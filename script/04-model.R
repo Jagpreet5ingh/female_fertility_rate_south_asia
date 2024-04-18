@@ -16,11 +16,11 @@ analysis_data <- read.csv("data/analysis_data/cleaned_data_south_asia_2000_2020.
 #### Create model ####
 
 # Fit a linear model
-model <- lm(female_literacy_rate ~ fertility_rate_total, data = analysis_data)
+model <- lm(fertility_rate_total ~ female_literacy_rate, data = analysis_data)
 
 # Summary of the model to see results
 modelsummary::modelsummary(
-  list("Fertility rate" = model),
+  list("Female Literacy Rate" = model),
   fmt = 2
 )
 
