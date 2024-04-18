@@ -16,9 +16,9 @@ set.seed(123)
 # Generate simulated data
 simulated_data <- tibble(
   Year = seq(2000, 2020, by = 1),
-  Fertility_Rate = round(seq(3.572, 2.267, length.out = 21) + rnorm(21, mean = 0, sd = 0.1), 3),
-  Literacy_Rate = round(seq(44.928, 64.607, length.out = 21) + rnorm(21, mean = 0, sd = 0.1), 3)
+  fertility_rate_total = round(seq(3.572, 2.267, length.out = 21) + rnorm(21, mean = 0, sd = 0.1), 3),
+  female_literacy_rate = round(seq(44.928, 64.607, length.out = 21) + rnorm(21, mean = 0, sd = 0.1), 3)
 )
 
 # Save the simulated data to a CSV file
-write.csv(simulated_data, file = "output/data/simulated_data.csv", row.names = FALSE)
+write.csv(simulated_data, file = "data/analysis_data/simulated_data.csv", row.names = FALSE)
