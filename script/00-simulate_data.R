@@ -9,6 +9,7 @@
 
 # Load necessary libraries
 library(tidyverse)
+library(dplyr)
 
 # Set seed for reproducibility
 set.seed(123)
