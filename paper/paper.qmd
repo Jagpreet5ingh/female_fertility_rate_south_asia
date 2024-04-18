@@ -180,6 +180,20 @@ summary_df <- data.frame(t_value = t_values, p_value = p_values)
 kable(summary_df)
 ```
 
+```{r, results='asis'}
+#| label: tbl-model2
+#| tbl-cap: "Summary of the linear regression model"
+#| echo: false
+#| warning: false
+
+library(knitr)
+
+library(modelsummary)
+
+loaded_model <- readRDS(here::here("models/linear_model.rds"))
+print(loaded_model)
+```
+
 ## Model Justification
 
 
