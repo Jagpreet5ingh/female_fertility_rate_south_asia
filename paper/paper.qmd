@@ -11,8 +11,6 @@ format: pdf
 fig-pos: "H"
 abstract: This paper utilizes data from the World Bank’s Gender Statistics database to examine the relationship between the adult female literacy rate (% of females ages 15 and above) and fertility rate (total births per woman) in South Asia between 2000-2020. The analysis revealed a negative correlation between the two variables, indicating that as the literacy rate increased, the fertility rate decreased. These findings matter as they highlight the importance of investing in female education and empowerment to manage population growth and promote sustainable development. The insights can guide policymakers make decisions on education initiatives and reproductive health programs to further enhance socioeconomic progress in the region.
 ---
-
-
 ```{r}
 knitr::opts_chunk$set(echo = FALSE, results ="hide", message = FALSE, warning = FALSE)
 ```
@@ -28,9 +26,11 @@ library(dplyr)
 library(ggplot2)
 library(modelsummary)
 
-analysis_data <- read_csv(here::here("data/analysis_data/cleaned_data_south_asia_2000_2020.csv"))
+
+analysis_data <- read.csv(here::here("data/analysis_data/cleaned_data_south_asia_2000_2020.csv"))
 
 ```
+
 
 # Introduction
 According to the World Bank, the South Asian region comprises Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, and Sri Lanka. It is the most populated region in the world with countries like India, Pakistan and Bangladesh which ranks among the top 10 in in terms of population size. Majority of these countries are also considered developing nations and play a major role in the world economy. In today’s globalized world where population dynamics significantly influence a country's course it is necessary to analyze gender statistics indicators such as fertility rate and female literacy rate and how they relate to each other. By doing so we can gain valuable insights which can help make policy decisions on female education and empowerment that inturn help manage population growth and promote sustainable development.
@@ -42,6 +42,17 @@ In section 1, we discuss the source of data used in this paper, methodologies th
 
 # Data {#sec-data}
 
+```{r, results='asis'}
+#| echo: false
+#| warning: false
+#| label: tbl-data
+#| tbl-cap: "A summary table of cleaned data"
+
+library(knitr)
+
+kable(analysis_data)
+
+```
 ## Data Source {#sec-variables-of-interest}
 
 ## Variables of Interest
@@ -84,7 +95,6 @@ This linear regression model aims to estimate the values of β0 and β1 such tha
 #| fig-cap: "The model shows the relationship between Female Literacy Rate and Fertility Rate in South Asia (2000-2020)"
 #| echo: false
 #| warning: false
-
 library(ggplot2)
 
 analysis_data %>%
@@ -93,15 +103,7 @@ analysis_data %>%
   geom_smooth(method = "lm", se = TRUE, color = "black", linetype = "solid") +
   labs(x = "Literacy Rate, Adult Females (% of females ages 15 and above)", y = "Fertility Rate, Total (births per woman)") +
   theme_classic()
-
 ```
-
-
-
-
-
-
-
 
 ## Model Justification
 
