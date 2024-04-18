@@ -30,8 +30,8 @@ south_asia_literacy_rate <- female_literacy_rate_data %>%
 combined_data <- left_join(south_asia_fertility_rate, south_asia_literacy_rate, by = "Year")
 
 # Save the combined data to a new CSV file
-write_csv(combined_data, "data/analysis_data/south_asia_2000_2020.csv")
+write_csv(combined_data, "data/analysis_data/cleaned_data_south_asia_2000_2020.csv")
 
-write_parquet(combined_data, "data/analysis_data/south_asia_2000_2020.parquet")
+write_parquet(combined_data, "data/analysis_data/cleaned_data_south_asia_2000_2020.parquet")
 
 
