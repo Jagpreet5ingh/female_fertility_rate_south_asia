@@ -1,5 +1,7 @@
 # Books and Babies: An Analysis of the Relationship between Female Literacy Rate and Fertility Rate in South Asia (2000-2020)
 
+## Overview of the Project
+
 This repository contains data and code used to produce a paper that analyzes the correlation between South Asia's literacy rate for adult female and fertility rate between year 2000 to 2020, using data from the World Bank.
 
 To use this folder, click the green "Code" button", then "Download ZIP". Move the downloaded folder to where you want to work on your own computer, and then modify it to suit.
