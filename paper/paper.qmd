@@ -180,23 +180,46 @@ summary_df <- data.frame(t_value = t_values, p_value = p_values)
 kable(summary_df)
 ```
 
-```{r}
+
+
+
+```{r, results='asis'}
+#| label: tbl-model2
+#| tbl-cap: "Summary of the linear regression model"
+#| echo: false
+#| warning: false
 library(knitr)
 
-# Load the model from the RDS file
+# Load the data from the RDS file
 loaded_model <- readRDS(here::here("models/linear_model.rds"))
 
-# Capture the console output
-output <- capture.output(summary(loaded_model))
+# Extract coefficients and their standard errors
+coefficients <- round(coef(loaded_model), 3)
+standard_errors <- round(summary(loaded_model)$coefficients[, "Std. Error"], 3)
 
-# Write the captured output to a text file
-writeLines(output, "model_summary.txt")
+# Create a data frame
+model_data <- data.frame(Coefficients = coefficients, Standard_Error = standard_errors)
 
-# Render the text file as a picture
-system(paste("convert -density 300 model_summary.txt model_summary.png"))
+# Render the data frame as a table using kable
+kable(model_data, format = "markdown")
 
-# Display the saved image
-include_graphics("model_summary.png")
+# Extract number of observations, R-squared value, and additional model metrics
+n_obs <- length(residuals(loaded_model))
+r_squared <- summary(loaded_model)$r.squared
+r_squared_adj <- summary(loaded_model)$adj.r.squared
+aic <- AIC(loaded_model)
+bic <- BIC(loaded_model)
+log_likelihood <- logLik(loaded_model)
+rmse <- sqrt(mean(residuals(loaded_model)^2))
+
+# Create a data frame for the model metrics
+model_metrics <- data.frame(
+  Metric = c("Num.Obs.", "R2", "R2 Adj.", "AIC", "BIC", "Log.Lik.", "RMSE"),
+  Value = c(n_obs, round(r_squared, 3), round(r_squared_adj, 3), aic, bic, log_likelihood, round(rmse, 2))
+)
+
+# Render the data frame as a table using kable
+kable(model_metrics, format = "markdown")
 
 ```
 
