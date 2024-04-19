@@ -25,7 +25,6 @@ In this paper, we will examine the relationship between the fertility rate (tota
 
 In section 1, we discuss the source of data used in this paper, methodologies that follow it, and data terminology. In section 2, we present the results of our analysis, focusing on the trajectory of fertility rate and female literacy rate over the last two decades in the region of South Asia. In section 3, we will analyze the trend by establishing a linear regression model. In section 4 we will present the result of the model in a graph. Finally, in section 5 we will further discuss the findings of the result.
 
-
 # Data 
 
 ## Data Description and Methodology
@@ -109,7 +108,6 @@ geom_line(color = "red") +  # Change to line graph
   labs(x = "Year", y = "Fertility Rate, Total (births per woman)")
 ```
 @fig-2 represents South Asia's fertility rate over the span of 21 years i.e. 2000-2020. The fertility rate is represented as the number of children that would be born to a woman if she were to live to the end of her childbearing years and bear children in accordance with age-specific fertility rates of the specified year. The graph depicts a strictly downward trend in the fertility rate over the past two decades. The fertility rate in year 2000 was 3.5722 children per woman which declined over the period of 21 years to 2.2670 children per woman as of 2020.The figure suggests that females in South Asia are choosing to have lesser and lesser number of children in recent times.There could be various social, cultural, economic and political changes that may have influenced this decline in fertility rate.
-
 \newpage
 
 # Model
@@ -118,11 +116,9 @@ Based on the preliminary analysis, we observed a negative relationship between f
 
 Below is the equation of the linear regression model:
 
-
 $$ 
 Yij = β0 + β1Xij + εij
 $$
-
 where:
 
 -   $Y$ is the Fertility Rate 
@@ -139,10 +135,7 @@ where:
 
 -   $\epsilon_{ij}$ is the error term or the deviation of the actual value of Fertility Rate from the predicted value based on the regression equation.
 
-
 This linear regression model aims to estimate the values of β0 and β1 such that the model fits the data well, and predicts the expected value of the Fertility Rate for different values of the Female Literacy Rate. The statistical significance of β1 can be assessed using a t-test, which tests whether the estimated coefficients are significantly different from zero. If the p-value of the t-test is less than the selected level of significance, we can conclude that there is a significant relationship between the Female Literacy Rate and the Fertility Rate.
-
-\newpage
 
 # Results
 
@@ -165,7 +158,6 @@ analysis_data %>%
 
 @fig-3 is a depiction of a linear regression model showing the relationship between fertility rate, total (births per woman) and literacy rate, adult females (% of females ages 15 and above). The female literacy rate is given by the x-axis and the fertility rate is given by the y-axis. The solid black line indicates the trend of this relationship as estimated by the linear regression model. The confidence interval for the regression line is given by the grey shaded area and also represents the uncertainty around the estimated relationship. Analyzing the regression line, we can observe that there exists a negative relationship between fertility rate, total (births per woman) and literacy rate, adult females (% of females ages 15 and above). As the literacy rate increases the total number of children a woman gives birth decreases. The negative sloping regression line indicating a negative correlation and the confidence interval giving the range of the uncertainty, we can say that a true regression lies in this area.
 
-\newpage
 
 ```{r, results='asis'}
 #| label: tbl-model
@@ -186,9 +178,6 @@ p_values <- model_summary$coefficients[, "Pr(>|t|)"]
 summary_df <- data.frame(t_value = t_values, p_value = p_values)
 kable(summary_df)
 ```
-
-
-
 
 ```{r, results='asis'}
 #| label: tbl-model2
@@ -245,10 +234,19 @@ The negative coefficient indicates a negative relationship between female litera
 
 * The R-squared value of 0.954 represents that approximately 95.4% of the variability in the fertility rate is explained by the model.This high R-squared value suggests a strong fit of the model to the data.
 
-In summary, this linear model suggests a statistically significant negative relationship between female literacy rate and fertility rate which means as female literacy rate increases, the fertility rate will decrease. However, the intercept is not statistically significant. While the model has a high R-squared value, indicating a strong fit to the data, the practical significance of the intercept may be questionable.
-
-
+The linear regression model suggests a statistically significant negative relationship between female literacy rate and fertility rate which means as female literacy rate increases, the fertility rate will decrease. However, the intercept is not statistically significant. While the model has a high R-squared value, indicating a strong fit to the data, the practical significance of the intercept may be questionable.
 
 # Discussion 
+
+## Growth in Female Literacy Rate in South Asia
+
+As analyzed in @fig-1,  the female literacy rate in South Asia is on the rise over the last two decades with a literacy rate of approximately 44.9 percent in the year 2000 to approximately 64.6 percent in 2020. This upward trend is not confined to the past two decades only. South Asia has made a tremendous progress in female literacy rate which was only 21.27 percent in 1975[@The_World_Bank_2024b]. 
+
+## Declining Fertility Rate (total births per woman)in South Asia
+
+As analyzed in @fig-2,  the fertility rate in South Asia is on the decline over the last two decades with a fertility rate of approximately 3.57 births per woman in the year 2000 to approximately 2.26 births per woman in 2020. This downward trend is not confined to the past two decades only. Fertility rate in South Asia has long been on a decline. The South Asian fertility rate was as high as 6.07 births per woman in 1960[@The_World_Bank_2024c]. 
+
+## Impact of Female Literacy Rate on Fertility Rate
+
 \newpage
 # References
